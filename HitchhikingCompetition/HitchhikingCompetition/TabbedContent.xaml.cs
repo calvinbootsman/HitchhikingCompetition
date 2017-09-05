@@ -34,7 +34,6 @@ namespace HitchhikingCompetition
             catch(Exception e)
             {
                 Debug.WriteLine(e);
-                Debug.WriteLine("Yolo");
             }
         }
        void UpdateLocation()
