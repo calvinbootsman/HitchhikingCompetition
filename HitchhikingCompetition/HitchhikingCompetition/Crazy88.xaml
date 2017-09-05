@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HitchhikingCompetition.Crazy88"
+             Title="Crazy 88">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Vertical"
+                     Spacing="30">
+            <ListView x:Name="Crazy88List" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        
+                        <ViewCell >
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Switch IsToggled="{Binding IsChecked}" Toggled="updaten"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Item}" FontAttributes="Bold" FontSize="Large"/>
+                                    <Label Text="{Binding Description}"/>
+                                    <Label Text="{Binding Points} " FontSize="Small" />                                   
+                                </StackLayout>                                
+                               
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

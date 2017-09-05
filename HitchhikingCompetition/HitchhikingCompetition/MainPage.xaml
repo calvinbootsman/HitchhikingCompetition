@@ -2,10 +2,26 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:HitchhikingCompetition"
-             x:Class="HitchhikingCompetition.MainPage">
+             x:Class="HitchhikingCompetition.MainPage"
+             Title="Je Moeder">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                    iOS="20, 40, 20, 20"
+                    Android="20, 20, 20, 20"
+                    WinPhone="20, 20, 20, 20" />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Orientation="Vertical"
+                     Spacing="15">
+            <Label Text="Enter your Code:" />
+            <Entry x:Name="LoginUsername" Text="calvinalida" />
+            <Entry x:Name="LoginPassword" IsPassword="True" Text="jemoeder1" />
+            <Button x:Name="LoginBtn" Text="Login" Clicked="LoginClicked" />
+            <Label x:Name="WrongCode" Text="" TextColor="IndianRed"/>
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>

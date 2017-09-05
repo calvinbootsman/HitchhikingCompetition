@@ -48,5 +48,7 @@
     </array>
     <key>UILaunchStoryboardName</key>
     <string>LaunchScreen</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Your location will be used and send to a database, so we can show it to other users.</string>
   </dict>
 </plist>

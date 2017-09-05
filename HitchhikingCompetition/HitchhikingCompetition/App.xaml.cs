@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using PCLStorage;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace HitchhikingCompetition
 {
     public partial class App : Application
     {
+        public static string MainUsername { get; set; }
         public App()
         {
             InitializeComponent();
-
-            MainPage = new HitchhikingCompetition.MainPage();
+            
+            MainPage = new NavigationPage (new StartUpPage()); 
         }
-
+        
         protected override void OnStart()
         {
             // Handle when your app starts
