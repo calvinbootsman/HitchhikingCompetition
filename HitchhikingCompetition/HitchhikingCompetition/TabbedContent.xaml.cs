@@ -18,6 +18,8 @@ namespace HitchhikingCompetition
             Children.Add(new Location());
             Children.Add(new Crazy88());
             Children.Add(new Settings());
+            //Children.Add(new StatisticsPage());
+
             try
             {
                 Device.StartTimer(TimeSpan.FromMinutes(2), () =>
@@ -26,8 +28,6 @@ namespace HitchhikingCompetition
                     // call your method to check for notifications here
                     UpdateLocation();
                     // Returning true means you want to repeat this timer
-                    
-
                     return true;
                 });
             }
@@ -38,7 +38,6 @@ namespace HitchhikingCompetition
         }
        void UpdateLocation()
         {
-            Debug.WriteLine("yo");
             Settings setting = new Settings();
             setting.GetLocation();
         }

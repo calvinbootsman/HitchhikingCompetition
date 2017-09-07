@@ -15,14 +15,17 @@ namespace HitchhikingCompetition
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Location : ContentPage
     {
+       
         public Location()
         {
             InitializeComponent();
-
+           
+            
         }
 
-        public void RefreshPage (){
-                LocationWebsite.Source = (LocationWebsite.Source as UrlWebViewSource).Url;
+        public void RefreshPage (object sender, EventArgs e)
+        {
+            LocationWebsite.Source = (LocationWebsite.Source as UrlWebViewSource).Url;
         }
 
        
