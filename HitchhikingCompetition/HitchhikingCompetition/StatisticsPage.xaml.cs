@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace HitchhikingCompetition
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StatisticsPage : ContentPage
-    {
-        public StatisticsPage()
-        {
-            
-        }
-    }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class StatisticsPage : ContentPage
+	{
+		public StatisticsPage ()
+		{
+			InitializeComponent ();
+		}
+	}
 }

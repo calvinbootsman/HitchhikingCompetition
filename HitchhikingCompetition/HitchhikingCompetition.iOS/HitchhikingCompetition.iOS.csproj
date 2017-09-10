@@ -159,6 +159,42 @@
       <Name>HitchhikingCompetition</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Location\ic_location_on_36pt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Location\ic_location_on_36pt_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Location\ic_location_on_36pt_3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\List\ic_format_list_numbered_36pt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\List\ic_format_list_numbered_36pt_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\List\ic_format_list_numbered_36pt_3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Settings\ic_settings_36pt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Settings\ic_settings_36pt_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Settings\ic_settings_36pt_3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Car\ic_directions_car_36pt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Car\ic_directions_car_36pt_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Car\ic_directions_car_36pt_3x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
