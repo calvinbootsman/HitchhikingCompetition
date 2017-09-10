@@ -4,7 +4,7 @@
              x:Class="HitchhikingCompetition.StatisticsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="" />
+            <Label Text="Test"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
