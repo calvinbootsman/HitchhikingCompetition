@@ -18,7 +18,7 @@ namespace HitchhikingCompetition
             Children.Add(new Location());
             Children.Add(new Crazy88());
             Children.Add(new Settings());
-            //Children.Add(new StatisticsPage());
+            Children.Add(new StatisticsPage());
 
             try
             {
