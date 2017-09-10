@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HitchhikingCompetition.StatisticsPage">
+             x:Class="HitchhikingCompetition.StatisticsPage"
+             Title="Ride">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Test"/>
+            <Label Text="Driver's Gender"/>
+            <Label Text="Driver's Age"/>
+            <Label Text="Amount of km with current driver"/>
+            <Label Text="From"/>
+            <Label Text="To"/>
+            <Label Text="Method of obtaining the ride"/>
+            <Label Text="Time of wait"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
