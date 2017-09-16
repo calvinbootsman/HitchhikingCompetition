@@ -20,17 +20,31 @@ namespace HitchhikingCompetition
         }
         async void TestIsClicked(object sender, EventArgs e)
         {
-            var file = await FileHandling.getFile("InlogFolder", "login.txt");
-            await file.DeleteAsync();
-            Navigation.InsertPageBefore(new MainPage(), this);
-            await Navigation.PopToRootAsync();
+            try
+            {
+                var file = await FileHandling.getFile("InlogFolder", "login.txt");
+                await file.DeleteAsync();
+                Navigation.InsertPageBefore(new MainPage(), this);
+                await Navigation.PopAsync();
+            }
+			catch (Exception es)
+			{
+				await DisplayAlert("Error", es.ToString(), "Ok");
+			}
         }
-        async void RemoveList()
+        async void RemoveList(object sender, EventArgs e)
         {
-            var file = await FileHandling.getFile("Crazy88Data", "AssignmentList.txt");
-            await file.DeleteAsync();
+            try
+            {
+                var file = await FileHandling.getFile("Crazy88Data", "AssignmentList.txt");
+                await file.DeleteAsync();
+            }
+			catch (Exception es)
+			{
+				await DisplayAlert("Error", es.ToString(), "Ok");
+			}
         }
-        async public void GetLocation()
+        async public void GetLocation(object sender, EventArgs e)
         {
             try
             {

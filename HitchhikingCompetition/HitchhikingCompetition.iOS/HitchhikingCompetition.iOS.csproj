@@ -114,6 +114,10 @@
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\Car\ic_directions_car_black_48px.svg" />
+    <BundleResource Include="Resources\Car\ic_directions_car_48pt_2x.png" />
+    <BundleResource Include="Resources\Car\ic_directions_car_48pt_3x.png" />
+    <BundleResource Include="Resources\Car\ic_directions_car_48pt.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -155,7 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HitchhikingCompetition\HitchhikingCompetition.csproj">
-      <Project>{021598a9-3669-4892-91df-a7fd8ba4fa1d}</Project>
+      <Project>{59819178-F693-4267-8E8A-2430B58FBBC4}</Project>
       <Name>HitchhikingCompetition</Name>
     </ProjectReference>
   </ItemGroup>
@@ -185,15 +189,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Settings\ic_settings_36pt_3x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Car\ic_directions_car_36pt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Car\ic_directions_car_36pt_2x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Car\ic_directions_car_36pt_3x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

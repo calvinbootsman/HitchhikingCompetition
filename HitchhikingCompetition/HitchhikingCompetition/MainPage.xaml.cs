@@ -29,13 +29,25 @@ namespace HitchhikingCompetition
             if (String.Compare(received, temp)+1 == 1)        //fucking C# with its string comparison: Checks if we got the user in the database
             {
                 //Write the username in a file and to a variable
-                var file = await FileHandling.getFile("InlogFolder", "login.txt");
-                await file.WriteAllTextAsync(username);
-                App.MainUsername = username;
-
+                try
+                {
+                    var file = await FileHandling.getFile("InlogFolder", "login.txt");
+                    await file.WriteAllTextAsync(username);
+                    App.MainUsername = username;
+                }
+				catch (Exception er)
+				{
+					await DisplayAlert("log in File handling", er.ToString(), "Ok");
+				}
                 //Go to the next page
-                Navigation.InsertPageBefore(new TabbedContent(), this);
-                await Navigation.PopToRootAsync();
+                try
+                {
+                    Navigation.InsertPageBefore(new TabbedContent(), this);
+                    await Navigation.PopToRootAsync();
+                }
+                catch(Exception er){
+                    await DisplayAlert("log in Next page", er.ToString(), "Ok");
+                }
             }
             else
             {
