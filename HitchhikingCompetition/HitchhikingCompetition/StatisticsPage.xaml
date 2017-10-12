@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HitchhikingCompetition.StatisticsPage"
-             Title="Ride"
-             Icon="Car/ic_direction_car_36pt.png">
+             Title="Ride" >
     <ContentPage.Content>
         <StackLayout>
            
