@@ -1,11 +1,71 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HitchhikingCompetition.StatisticsPage"
-             Title="Ride" >
+             >
     <ContentPage.Content>
-        <StackLayout>
-           
+        <StackLayout x:Name="MainStack" >
+            <Label Text="Current ride" FontSize="48" HorizontalOptions="CenterAndExpand"/>     
+            <Frame>
+                <Label Text="From Groningen to Bremen" HorizontalOptions="CenterAndExpand" FontSize="28"/>
+            </Frame>    
+            <Grid x:Name="StatisticsGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0" Grid.Column ="0">
+                    <StackLayout >
+                        <Label Text="Start time" FontAttributes="Bold" FontSize="20"/>
+                        <Label Text="08.54" x:Name="StartTimeLbl"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column ="1">
+                    <StackLayout >
+                        <Label Text="End time" FontAttributes="Bold" FontSize="20"/>
+                        <Label Text="18.25" x:Name="EndTimeLbl"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="0">
+                <StackLayout>
+                    <Label Text="Total time" FontAttributes="Bold" FontSize="20"/>
+                    <Label Text="9.31 hours" x:Name="TotalTimeLbl"/>
+                </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1">
+                    <StackLayout>
+                        <Label Text="Total km" FontAttributes="Bold" FontSize="20"/>
+                        <Label Text="568 km" x:Name="TotalKmLbl"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="0" x:Name="TotalTimesFrame">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Amount of rides" FontAttributes="Bold" FontSize="20"/>
+                        <Label Text="6" HorizontalOptions="EndAndExpand" x:Name="TotalRidesLbl"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="1" x:Name="StartStopFrame">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Start" FontAttributes="Bold" x:Name="StartStopLbl" FontSize="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            <Button Text="Add car ride"/>
+            <Button Text="View all statistics"/>
+
         </StackLayout>
+
+            
+            <!--<Button Text="Add new ride" Grid.Row="1" Grid.Column="1" FontSize="25" Style="{StaticResource plainButton}"/>
+            <Button Text="Counter" Grid.Row="3" Grid.Column="1" FontSize="30" Style="{StaticResource plainButton}"/>
+            <Button Text="View statistics" Grid.Row="5" Grid.Column="1" FontSize="20" Style="{StaticResource plainButton}"/>
+            <Button Text="Your account" Grid.Row="1" Grid.Column="3" FontSize="25" Style="{StaticResource plainButton}"/>
+            <Button Text="Your place" Grid.Row="3" Grid.Column="3" FontSize="30" Style="{StaticResource plainButton}"/>-->
+
     </ContentPage.Content>
 </ContentPage>

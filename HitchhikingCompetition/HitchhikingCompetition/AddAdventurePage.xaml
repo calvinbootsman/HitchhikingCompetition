@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage    xmlns="http://xamarin.com/schemas/2014/forms" 
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                x:Class="HitchhikingCompetition.AddAdventurePage">
+	<ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Form">
+                <TableView.Root>
+                    <TableSection Title="Adventure information">
+                        <EntryCell Label="Start Location" Placeholder="Groningen"/>
+                        <EntryCell Label="Destination"  Placeholder="Bremen"/>
+                        <EntryCell Label="Amount of km" Placeholder="180"/>
+                    </TableSection>
+                </TableView.Root>
+            </TableView>
+            <Button Text="Add adventure" />
+        </StackLayout>
+	</ContentPage.Content>
+</ContentPage>

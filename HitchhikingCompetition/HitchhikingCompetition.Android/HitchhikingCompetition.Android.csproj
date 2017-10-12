@@ -151,13 +151,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HitchhikingCompetition\HitchhikingCompetition.csproj">
-      <Project>{021598a9-3669-4892-91df-a7fd8ba4fa1d}</Project>
+      <Project>{59819178-F693-4267-8E8A-2430B58FBBC4}</Project>
       <Name>HitchhikingCompetition</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Login.txt" />
-    <AndroidResource Include="Resources\drawable\Car\ic_directions_car_36pt.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

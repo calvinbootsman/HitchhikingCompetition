@@ -8,7 +8,7 @@ using Xamarin.Forms.Xaml;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using PCLStorage;
-
+//COVERED!
 namespace HitchhikingCompetition
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -17,24 +17,28 @@ namespace HitchhikingCompetition
         public Crazy88()
         {
             InitializeComponent();
-            TestVoid();
             Crazy88List.ItemsSource = Data.crazy88list;
+        }
 
-        }
-        async void TestVoid()
+        async void updaten()
         {
-            IFile file = await FileHandling.getFile("Crazy88Data", "AssignmentList.txt");            
-        }
-        async void updaten(){
             string text = "";
-            foreach (Crazy88Assignments dinges in Data.crazy88list)
+           
+                foreach (Crazy88Assignments dinges in Data.crazy88list)
+                {
+                    Debug.WriteLine("Item: " + dinges.Item + " ID: " + dinges.IsChecked);
+                    text += dinges.Item + "*" + dinges.Description + "*" + dinges.Points + "*" + dinges.IsChecked + ";";
+                }
+            try
             {
-                Debug.WriteLine("Item: "+dinges.Item + " ID: " + dinges.IsChecked);
-                text += dinges.Item + "*" + dinges.Description + "*"+dinges.Points+"*" + dinges.IsChecked + ";";
+                IFile file = await FileHandling.getFile("Crazy88Data", "AssignmentList.txt");
+                await file.WriteAllTextAsync(text);
+            
             }
-            IFile file = await FileHandling.getFile("Crazy88Data", "AssignmentList.txt");
-            await file.WriteAllTextAsync(text);
+			catch (Exception e)
+			{
+				await DisplayAlert("Updaten 2", e.ToString(), "Ok");
+			}
         }
-        
     }
 }
