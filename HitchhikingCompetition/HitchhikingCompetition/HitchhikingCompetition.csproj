@@ -59,6 +59,10 @@
     <Compile Include="TabbedContent.xaml.cs">
       <DependentUpon>TabbedContent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatisticsClass.cs" />
+    <Compile Include="AddAdventurePage.xaml.cs">
+      <DependentUpon>AddAdventurePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -71,6 +75,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Images\AddCar.png">
       <LogicalName>HitchhikingCompetition.Images.car-icon-png-25.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddAdventurePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -124,9 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Login.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Crazy88.xaml">

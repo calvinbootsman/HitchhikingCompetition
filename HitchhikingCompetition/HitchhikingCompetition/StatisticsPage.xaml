@@ -4,13 +4,14 @@
              x:Class="HitchhikingCompetition.StatisticsPage"
              >
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout x:Name="MainStack" >
             <Label Text="Current ride" FontSize="48" HorizontalOptions="CenterAndExpand"/>     
             <Frame>
                 <Label Text="From Groningen to Bremen" HorizontalOptions="CenterAndExpand" FontSize="28"/>
             </Frame>    
-            <Grid>
+            <Grid x:Name="StatisticsGrid">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
@@ -21,35 +22,42 @@
                 <Frame Grid.Row="0" Grid.Column ="0">
                     <StackLayout >
                         <Label Text="Start time" FontAttributes="Bold" FontSize="20"/>
-                        <Label Text="08.54" />
+                        <Label Text="08.54" x:Name="StartTimeLbl"/>
                     </StackLayout>
                 </Frame>
                 <Frame Grid.Row="0" Grid.Column ="1">
                     <StackLayout >
                         <Label Text="End time" FontAttributes="Bold" FontSize="20"/>
-                        <Label Text="18.25" />
+                        <Label Text="18.25" x:Name="EndTimeLbl"/>
                     </StackLayout>
                 </Frame>
                 <Frame Grid.Row="1" Grid.Column="0">
                 <StackLayout>
                     <Label Text="Total time" FontAttributes="Bold" FontSize="20"/>
-                    <Label Text="9.31 hours"/>
+                    <Label Text="9.31 hours" x:Name="TotalTimeLbl"/>
                 </StackLayout>
                 </Frame>
                 <Frame Grid.Row="1" Grid.Column="1">
                     <StackLayout>
                         <Label Text="Total km" FontAttributes="Bold" FontSize="20"/>
-                        <Label Text="568 km"/>
+                        <Label Text="568 km" x:Name="TotalKmLbl"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="0" x:Name="TotalTimesFrame">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Amount of rides" FontAttributes="Bold" FontSize="20"/>
+                        <Label Text="6" HorizontalOptions="EndAndExpand" x:Name="TotalRidesLbl"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="2" Grid.Column="1" x:Name="StartStopFrame">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Start" FontAttributes="Bold" x:Name="StartStopLbl" FontSize="30" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                     </StackLayout>
                 </Frame>
             </Grid>
+            <Button Text="Add car ride"/>
+            <Button Text="View all statistics"/>
 
-            <Frame>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Amount of rides" FontAttributes="Bold" FontSize="20"/>
-                    <Label Text="6" HorizontalOptions="EndAndExpand"/>
-                </StackLayout>
-            </Frame>
         </StackLayout>
 
             

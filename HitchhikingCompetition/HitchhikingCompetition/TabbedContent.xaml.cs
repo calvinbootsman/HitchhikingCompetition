@@ -21,6 +21,7 @@ namespace HitchhikingCompetition
                 Children.Add(new StatisticsPage() { Title = "Ride" });
 				Children.Add(new Crazy88(){ Title = "Crazy88" });
 				Children.Add(new Settings(){ Title = "Settings" });
+                Children.Add(new AddAdventurePage(){ Title="Adventure Page"});
             }
             else
             {
@@ -28,6 +29,7 @@ namespace HitchhikingCompetition
                 Children.Add(new StatisticsPage(){Icon = "Car/ic_directions_car_48pt.png"});
                 Children.Add(new Crazy88(){Icon = "List/ic_format_list_numbered_36pt.png" });
                 Children.Add(new Settings(){Icon = "Settings/ic_settings_36pt.png" });
+                Children.Add(new AddAdventurePage() { Title = "Adventure Page" });
             }
 
 
@@ -49,8 +51,10 @@ namespace HitchhikingCompetition
         }
        void UpdateLocation()
         {
+            var test = new object();
+            var test1 = new EventArgs();
             Settings setting = new Settings();
-            setting.GetLocation();
+            setting.GetLocation(test,test1);
         }
     }
 }
