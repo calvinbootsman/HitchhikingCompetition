@@ -20,7 +20,7 @@ namespace HitchhikingCompetition
             Crazy88List.ItemsSource = Data.crazy88list;
         }
 
-        async void updaten()
+        async void Updaten()
         {
             string text = "";
            

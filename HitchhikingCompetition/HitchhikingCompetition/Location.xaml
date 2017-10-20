@@ -4,7 +4,7 @@
              x:Class="HitchhikingCompetition.Location">
     <ContentPage.Content>        
         <StackLayout x:Name="MainStack">
-            <WebView x:Name="LocationWebsite" Source="http://trickingnederland.nl/lift/maps.php" WidthRequest="1000" HeightRequest="1000"/>
+            <WebView x:Name="LocationWebsite" WidthRequest="1000" HeightRequest="1000"/>
             <Button Clicked="RefreshPage" Text="Refresh"/>
         </StackLayout>
     </ContentPage.Content>

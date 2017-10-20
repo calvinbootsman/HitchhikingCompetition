@@ -17,8 +17,8 @@
                      Orientation="Vertical"
                      Spacing="15">
             <Label Text="Enter your Code:" />
-            <Entry x:Name="LoginUsername" Text="calvinalida" />
-            <Entry x:Name="LoginPassword" IsPassword="True" Text="jemoeder1" />
+            <Entry x:Name="LoginUsername" Text="calvinhelen" />
+            <Entry x:Name="LoginPassword" IsPassword="True" Text="jemoeder2" />
             <Button x:Name="LoginBtn" Text="Login" Clicked="LoginClicked" />
             <Label x:Name="WrongCode" Text="" TextColor="IndianRed"/>
         </StackLayout>
