@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Diagnostics;
-using PCLStorage;
 namespace HitchhikingCompetition
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -32,11 +31,11 @@ namespace HitchhikingCompetition
                 //Children.Add(new AddAdventurePage() { Title = "Adventure Page" });
             }
 
-
+            UpdateLocation();
             try
             {
-                UpdateLocation();
-                Device.StartTimer(TimeSpan.FromMinutes(2), () =>
+                
+                Device.StartTimer(TimeSpan.FromMinutes(10), () =>
                 {
 
                     // call your method to check for notifications here
