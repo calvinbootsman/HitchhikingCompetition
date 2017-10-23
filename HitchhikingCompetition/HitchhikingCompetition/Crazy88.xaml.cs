@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Diagnostics;
 using PCLStorage;
-//COVERED!
+
 namespace HitchhikingCompetition
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -15,18 +15,23 @@ namespace HitchhikingCompetition
             Crazy88List.ItemsSource = Data.crazy88list;
         }
 
-        async void Updaten()
+        //MakeUpToDate will be called when there's a change in the accomplished task from the crazy88.
+        //
+        async void MakeUpToDate()
         {
             string text = "";
            
                 foreach (Crazy88Assignments dinges in Data.crazy88list)
                 {
-                    Debug.WriteLine("Item: " + dinges.Item + " ID: " + dinges.IsChecked);
+#if DEBUG
+                Debug.WriteLine("Item: " + dinges.Item + " ID: " + dinges.IsChecked);
                     text += dinges.Item + "*" + dinges.Description + "*" + dinges.Points + "*" + dinges.IsChecked + ";";
                 }
+#endif
             try
             {
-                IFile file = await FileHandling.getFile("Crazy88Data", "AssignmentList.txt");
+               //We will rewrite the file
+                IFile file = await FileHandling.GetFile("Crazy88Data", "AssignmentList.txt");
                 await file.WriteAllTextAsync(text);
             
             }

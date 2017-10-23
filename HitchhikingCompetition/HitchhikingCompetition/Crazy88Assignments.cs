@@ -19,8 +19,11 @@ namespace HitchhikingCompetition
 	}
 	class Data
 	{
+        //In this collection we will put every assignment. 
 		public static ObservableCollection<Crazy88Assignments> crazy88list = new ObservableCollection<Crazy88Assignments>();
 
+        //We will get the assignements from a file.
+        //If this file doesn't exist, we will get all the data from the file from the webs. 
 		public async Task<int> ReadTheFile()
 		{
 			//First we make the folder
@@ -67,13 +70,9 @@ namespace HitchhikingCompetition
 			return 1;
 
 		}
-		void ChangeCollection()
-		{
 
-		}
 		async void MakeCollection(IFile File)
 		{
-
 			var text = await File.ReadAllTextAsync();
 			try
 			{
@@ -81,11 +80,15 @@ namespace HitchhikingCompetition
 
 				foreach (string seperated in DataArray)
 				{
-					Debug.WriteLine(seperated);
+					
 					string[] stringcollection = seperated.Split('*');
 					Debug.WriteLine("Lets see if it works: " + stringcollection[1]);
 					crazy88list.Add(new Crazy88Assignments { Item = stringcollection[0], Description = stringcollection[1], Points = stringcollection[2], IsChecked = Convert.ToBoolean(stringcollection[3]) });
-				}
+#if DEBUG
+                    Debug.WriteLine(seperated);
+                    Debug.WriteLine("Lets see if it works: " + stringcollection[1]);
+#endif
+                }
 			}
 			catch (Exception e)
 			{

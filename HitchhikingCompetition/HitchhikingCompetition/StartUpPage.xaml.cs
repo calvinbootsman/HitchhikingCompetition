@@ -31,7 +31,7 @@ namespace HitchhikingCompetition
             while (check != 1) { };
             //First we check if theres a file with something in it. 
             //If there's nothing in it we go to the log in            
-            var file = await FileHandling.getFile("InlogFolder", "login.txt");
+            var file = await FileHandling.GetFile("InlogFolder", "login.txt");
             var username=  await file.ReadAllTextAsync();
             if (username.Equals(""))
             {

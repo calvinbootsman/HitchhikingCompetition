@@ -8,7 +8,7 @@ namespace HitchhikingCompetition
 {
     class FileHandling
     {
-        async public static Task<IFile> getFile(string Folder, string File)
+        async public static Task<IFile> GetFile(string Folder, string File)
         {
             IFolder rootFolder = FileSystem.Current.LocalStorage;
             IFolder folder = await rootFolder.CreateFolderAsync(Folder,
@@ -20,7 +20,7 @@ namespace HitchhikingCompetition
 
         async public Task<string> readline(string Folder, string File, int line)
         {
-            var file = await getFile(Folder, File);
+            var file = await GetFile(Folder, File);
             var output = file.ReadAllTextAsync();
             return "";
         }

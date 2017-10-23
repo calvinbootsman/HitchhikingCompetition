@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using Plugin.Geolocator;
 using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using PCLStorage;
 
 namespace HitchhikingCompetition
 {
@@ -17,49 +15,26 @@ namespace HitchhikingCompetition
         public Settings()
         {
             InitializeComponent();
+            TrackingSwitch.IsToggled = App.AllowTracking;
         }
-        async void TestIsClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                var file = await FileHandling.getFile("InlogFolder", "login.txt");
-                await file.DeleteAsync();
-                Navigation.InsertPageBefore(new MainPage(), this);
-                await Navigation.PopAsync();
-            }
-			catch (Exception es)
-			{
-				await DisplayAlert("Error", es.ToString(), "Ok");
-			}
-        }
-        async void RemoveList(object sender, EventArgs e)
-        {
-            try
-            {
-                var file = await FileHandling.getFile("Crazy88Data", "AssignmentList.txt");
-                await file.DeleteAsync();
-            }
-			catch (Exception es)
-			{
-				await DisplayAlert("Error", es.ToString(), "Ok");
-			}
-        }
+
         async public void GetLocation(object sender, EventArgs e)
         {
             try
             {
                 var locator = CrossGeolocator.Current;
-                locator.DesiredAccuracy = 50;
+                locator.DesiredAccuracy = 100;
 
-                var position = await locator.GetPositionAsync(10000);
+                var position = await locator.GetPositionAsync(30000);
                 var latitude = position.Latitude;
                 Latitudelbl.Text = "Latitude: " + position.Latitude;
                 Longitudelbl.Text = "Longitude: " + position.Longitude;
                 Speedlbl.Text = "Speed: " + position.Speed;
+#if DEBUG
                 Debug.WriteLine("Position Status: {0}", position.Timestamp);
                 Debug.WriteLine("Position Latitude: {0}", position.Latitude);
                 Debug.WriteLine("Position Longitude: {0}", position.Longitude);
-
+#endif
                 var client = new System.Net.Http.HttpClient();
                 var uri = new Uri("http://trickingnederland.nl/lift/Liftwedstrijd.php");
 
@@ -76,6 +51,64 @@ namespace HitchhikingCompetition
                 await client.PostAsync(uri, str);
             }
             catch (Exception) { }
+        }
+
+        async void TestIsClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                //here we want to log out. This will create an error, but it's okay for now.
+                var file = await FileHandling.GetFile("InlogFolder", "login.txt");
+                await file.DeleteAsync();
+                Navigation.InsertPageBefore(new MainPage(), this);
+                await Navigation.PopAsync();
+            }
+			catch (Exception es)
+			{
+                //todo make sure this error doensn't happen
+				await DisplayAlert("Error", es.ToString(), "Ok");
+			}
+        }
+        async void RemoveList(object sender, EventArgs e)
+        {
+            try
+            {
+                var file = await FileHandling.GetFile("Crazy88Data", "AssignmentList.txt");
+                await file.DeleteAsync();
+            }
+			catch (Exception es)
+			{
+				await DisplayAlert("Error", es.ToString(), "Ok");
+			}
+        }
+
+        private async void TrackingSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (TrackingSwitch.IsToggled)
+            {
+                try
+                {
+                    Device.StartTimer(TimeSpan.FromMinutes(3), () =>
+                    {
+
+                        // call your method to check for notifications here
+                        var tabbed = new TabbedContent();
+                        tabbed.UpdateLocation();
+                        // Returning true means you want to repeat this timer
+                        return App.AllowTracking;
+                    });
+                    IFile file = await FileHandling.GetFile("Bools", "AllowTracking");
+                   await file.WriteAllTextAsync("1");
+                    App.AllowTracking = true;
+                }
+                catch (Exception es) { }
+            }
+            else
+            {
+                IFile file = await FileHandling.GetFile("Bools", "AllowTracking");
+                await file.WriteAllTextAsync("0");
+                App.AllowTracking = false;
+            }
         }
     }
 }

@@ -11,11 +11,13 @@ namespace HitchhikingCompetition
     public partial class App : Application
     {
         public static string MainUsername { get; set; }
+        public static bool AllowTracking{ get; set; }
         public App()
         {
             InitializeComponent();
             
             MainPage = new NavigationPage (new StartUpPage()); 
+            
         }
         
         protected override void OnStart()

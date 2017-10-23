@@ -28,16 +28,21 @@ namespace HitchhikingCompetition
 
         private void UpdateLocation_Clicked(object sender, EventArgs e)
         {
-            var tabbedcontent = new TabbedContent();
-            tabbedcontent.UpdateLocation();
-            LocationWebsite.Source = (LocationWebsite.Source as UrlWebViewSource).Url;
+            //We can only track if they have given permission to let us track them.
+            if (App.AllowTracking)
+            {
+                var tabbedcontent = new TabbedContent();
+                tabbedcontent.UpdateLocation();
+                LocationWebsite.Source = (LocationWebsite.Source as UrlWebViewSource).Url;
+            }
         }
 
-        public void RefreshPage (object sender, EventArgs e)
+        public void RefreshPage(object sender, EventArgs e)
         {
-            LocationWebsite.Source = "http://trickingnederland.nl/lift/maps.php"; //(LocationWebsite.Source as UrlWebViewSource).Url;
+            if (App.AllowTracking)
+            {
+                LocationWebsite.Source = "http://trickingnederland.nl/lift/maps.php"; //(LocationWebsite.Source as UrlWebViewSource).Url;
+            }
         }
-
-       
     }
 }

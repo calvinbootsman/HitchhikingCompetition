@@ -27,7 +27,7 @@ namespace HitchhikingCompetition
                 //Write the username in a file and to a variable
                 try
                 {
-                    var file = await FileHandling.getFile("InlogFolder", "login.txt");
+                    var file = await FileHandling.GetFile("InlogFolder", "login.txt");
                     await file.WriteAllTextAsync(username);
                     App.MainUsername = username;
                 }
