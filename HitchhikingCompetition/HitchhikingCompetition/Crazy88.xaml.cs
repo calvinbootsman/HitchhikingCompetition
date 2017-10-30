@@ -26,10 +26,11 @@ namespace HitchhikingCompetition
 #if DEBUG
                 Debug.WriteLine("Item: " + dinges.Item + " ID: " + dinges.IsChecked);
                     text += dinges.Item + "*" + dinges.Description + "*" + dinges.Points + "*" + dinges.IsChecked + ";";
-                }
 #endif
-            try
-            {
+            }
+
+                try
+                {
                //We will rewrite the file
                 IFile file = await FileHandling.GetFile("Crazy88Data", "AssignmentList.txt");
                 await file.WriteAllTextAsync(text);

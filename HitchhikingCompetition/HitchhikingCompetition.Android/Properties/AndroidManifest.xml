@@ -3,5 +3,5 @@
 	<uses-sdk android:minSdkVersion="14" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<application android:label="HitchhikingCompetition.Android"></application>
+	<application android:label="HitchhikingCompetition.Android" android:icon="@drawable/icon"></application>
 </manifest>
