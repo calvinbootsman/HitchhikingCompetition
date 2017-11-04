@@ -24,42 +24,5 @@ namespace HitchhikingCompetition
             var output = file.ReadAllTextAsync();
             return "";
         }
-
-        async public void InitAppSettings()
-        {
-            var file = await getFile("AppSettings", "Settings");
-            var FileText = await file.ReadAllTextAsync();
-            if (FileText == "")
-            {
-                await file.WriteAllTextAsync("Username=#Tracking=#LastLongitude=#LastLatitude=#Mood=#Message=");
-                App.MainUsername = "";
-            }
-            else
-            {
-                var TextSplitted = FileText.Split('#');
-                App.MainUsername = TextSplitted[0].Split('=')[1];
-            }
-        }
-
-        async public void AddData(string data, int position)
-        {
-            var file = await getFile("AppSettings", "Settings");
-            var FileText = await file.ReadAllTextAsync();
-            if (FileText == "")
-            {
-            }
-            else
-            {
-                var TextSplitted = FileText.Split('#');
-                var KeyAndValue = TextSplitted[position].Split('=');
-                TextSplitted[position] = KeyAndValue[0] + "=" + KeyAndValue[1];
-                FileText = "";
-                foreach(string x in TextSplitted)
-                {
-                    FileText += x;
-                }
-                await file.WriteAllTextAsync(FileText);
-            }
-        }
     }
 }
