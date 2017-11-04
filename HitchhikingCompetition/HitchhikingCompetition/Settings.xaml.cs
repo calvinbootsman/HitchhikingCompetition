@@ -58,7 +58,7 @@ namespace HitchhikingCompetition
             try
             {
                 //here we want to log out. This will create an error, but it's okay for now.
-                var file = await FileHandling.GetFile("InlogFolder", "login.txt");
+                var file = await FileHandling.GetFile("Appdata", "login.txt");
                 await file.DeleteAsync();
                 Navigation.InsertPageBefore(new MainPage(), this);
                 await Navigation.PopAsync();
@@ -88,6 +88,8 @@ namespace HitchhikingCompetition
             {
                 try
                 {
+                    IFile file = await FileHandling.GetFile("Appdata", "AllowTracking.txt");
+                    await file.WriteAllTextAsync("1");
                     Device.StartTimer(TimeSpan.FromMinutes(3), () =>
                     {
 
@@ -97,15 +99,14 @@ namespace HitchhikingCompetition
                         // Returning true means you want to repeat this timer
                         return App.AllowTracking;
                     });
-                    IFile file = await FileHandling.GetFile("Bools", "AllowTracking");
-                   await file.WriteAllTextAsync("1");
+                    
                     App.AllowTracking = true;
                 }
                 catch (Exception es) { }
             }
             else
             {
-                IFile file = await FileHandling.GetFile("Bools", "AllowTracking");
+                IFile file = await FileHandling.GetFile("Appdata", "AllowTracking.txt");
                 await file.WriteAllTextAsync("0");
                 App.AllowTracking = false;
             }

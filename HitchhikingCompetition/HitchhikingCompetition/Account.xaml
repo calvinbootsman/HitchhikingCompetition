@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HitchhikingCompetition.Account">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Mood:" />
+            <Entry x:Name="MoodEntry" Placeholder="Happy!" />
+            <Label Text="Message:"/>
+            <Entry x:Name="MessageEntry" Placeholder="We're going to win!"/>
+            <Button Text="Update!" Clicked="Button_Clicked"/>
+            <ActivityIndicator Color="Blue" IsRunning="False"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

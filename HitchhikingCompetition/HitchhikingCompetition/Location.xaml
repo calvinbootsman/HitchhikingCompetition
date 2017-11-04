@@ -4,6 +4,7 @@
              x:Class="HitchhikingCompetition.Location">
     <ContentPage.Content>        
         <StackLayout x:Name="MainStack">
+            <Label x:Name="TrackerNotEnabled" IsVisible="False" Text="Go to: Settings > Enable Tracking" FontSize="Large"/>
             <WebView x:Name="LocationWebsite" WidthRequest="1000" HeightRequest="1000"/>
             <Button Clicked="RefreshPage" Text="Refresh"/>
         </StackLayout>

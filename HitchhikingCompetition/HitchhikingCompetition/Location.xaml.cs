@@ -11,7 +11,7 @@ namespace HitchhikingCompetition
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Location : ContentPage
     {
-       
+
         public Location()
         {
             InitializeComponent();
@@ -24,6 +24,26 @@ namespace HitchhikingCompetition
             var test = new object();
             var test1 = new EventArgs();
             RefreshPage(test, test1);
+            if (!App.AllowTracking)
+            {
+                TrackerNotEnabled.IsVisible = true;
+            }
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            
+            if (App.AllowTracking)
+            {
+                TrackerNotEnabled.IsVisible = false;
+                LocationWebsite.IsVisible = true;
+                
+            }
+            else
+            {
+                TrackerNotEnabled.IsVisible = true;
+                LocationWebsite.IsVisible = false ;
+            }
         }
 
         private void UpdateLocation_Clicked(object sender, EventArgs e)
@@ -31,9 +51,14 @@ namespace HitchhikingCompetition
             //We can only track if they have given permission to let us track them.
             if (App.AllowTracking)
             {
+                TrackerNotEnabled.IsVisible = false;
                 var tabbedcontent = new TabbedContent();
                 tabbedcontent.UpdateLocation();
                 LocationWebsite.Source = (LocationWebsite.Source as UrlWebViewSource).Url;
+            }
+            else
+            {
+                TrackerNotEnabled.IsVisible = true;
             }
         }
 
@@ -41,7 +66,12 @@ namespace HitchhikingCompetition
         {
             if (App.AllowTracking)
             {
-                LocationWebsite.Source = "http://trickingnederland.nl/lift/maps.php"; //(LocationWebsite.Source as UrlWebViewSource).Url;
+                TrackerNotEnabled.IsVisible = false;
+                LocationWebsite.Source = "http://trickingnederland.nl/lift/maps.php"; 
+            }
+            else
+            {
+                TrackerNotEnabled.IsVisible = true;
             }
         }
     }

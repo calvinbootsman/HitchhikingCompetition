@@ -21,6 +21,7 @@
             <Entry x:Name="LoginPassword" IsPassword="True" Text="" />
             <Button x:Name="LoginBtn" Text="Login" Clicked="LoginClicked" />
             <Label x:Name="WrongCode" Text="" TextColor="IndianRed"/>
+            <ActivityIndicator x:Name="ActivityRunner" Color="Blue" IsRunning="False"/>
         </StackLayout>
     </ContentPage.Content>
 

@@ -22,6 +22,7 @@ namespace HitchhikingCompetition
                 Children.Add(new Location() { Title = "Location" });
                 //Children.Add(new StatisticsPage() { Title = "Ride" });
                 Children.Add(new Crazy88() { Title = "Crazy88" });
+                Children.Add(new Account() { Title = "Account" });
                 Children.Add(new Settings() { Title = "Settings" });
                 //Children.Add(new AddAdventurePage(){ Title="Adventure Page"});
             }
@@ -63,10 +64,7 @@ namespace HitchhikingCompetition
         }
         async void CheckTracking()
         {
-            IFile file = await FileHandling.GetFile("Bools", "AllowTracking");
-            var temp = await file.ReadAllTextAsync();
-            if (temp == "1") App.AllowTracking = true;
-            else App.AllowTracking = false;
+            
         }
     }
 }

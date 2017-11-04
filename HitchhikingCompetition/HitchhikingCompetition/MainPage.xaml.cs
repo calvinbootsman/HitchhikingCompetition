@@ -10,13 +10,14 @@ namespace HitchhikingCompetition
 {
     public partial class MainPage : ContentPage
     {
-        public void Login()
+        public MainPage()
         {
             InitializeComponent();
         }
         
         async void LoginClicked(object sender, EventArgs e)
         {
+            ActivityRunner.IsRunning = true;
             var username = LoginUsername.Text;
             var password = LoginPassword.Text;
             var received = await PostInlog(username, password);     //send the typed in data to the server and waits for response
@@ -28,7 +29,7 @@ namespace HitchhikingCompetition
                 //TODO: Add filehandling file
                 try
                 {
-                    var file = await FileHandling.GetFile("InlogFolder", "login.txt");
+                    var file = await FileHandling.GetFile("Appdata", "login.txt");
                     await file.WriteAllTextAsync(username);
                     App.MainUsername = username;
                 }
@@ -49,6 +50,7 @@ namespace HitchhikingCompetition
             }
             else
             {
+                ActivityRunner.IsRunning = false;
                 WrongCode.Text = "Login is not vallid";
             } 
         }

@@ -43,9 +43,10 @@ namespace HitchhikingCompetition
 				Debug.WriteLine("File does exist!");
 				IFile file = await folder.CreateFileAsync(File,
 					CreationCollisionOption.OpenIfExists);
-				MakeCollection(file);
-				// await file.DeleteAsync();
-			}
+                var x = await MakeCollection(file);
+                while (x != 1) { Debug.WriteLine("Waiting..."); }
+                // await file.DeleteAsync();
+            }
 
 			//File doesn't exists
 			else
@@ -64,14 +65,14 @@ namespace HitchhikingCompetition
 
 				//Make the file and make it into a oberservablecollection
 				await file.WriteAllTextAsync(placesJson);
-				MakeCollection(file);
-
+				var x = await MakeCollection(file);
+                while (x != 1) { Debug.WriteLine("Waiting..."); }
 			}
 			return 1;
 
 		}
 
-		async void MakeCollection(IFile File)
+		async Task<int> MakeCollection(IFile File)
 		{
 			var text = await File.ReadAllTextAsync();
 			try
@@ -82,18 +83,19 @@ namespace HitchhikingCompetition
 				{
 					
 					string[] stringcollection = seperated.Split('*');
-					Debug.WriteLine("Lets see if it works: " + stringcollection[1]);
+					//Debug.WriteLine("Lets see if it works: " + stringcollection[1]);
 					crazy88list.Add(new Crazy88Assignments { Item = stringcollection[0], Description = stringcollection[1], Points = stringcollection[2], IsChecked = Convert.ToBoolean(stringcollection[3]) });
-#if DEBUG
+
                     Debug.WriteLine(seperated);
                     Debug.WriteLine("Lets see if it works: " + stringcollection[1]);
-#endif
+
                 }
 			}
 			catch (Exception e)
 			{
 				Debug.WriteLine(e);
 			}
+            return 1;
 		}
 	}
 
