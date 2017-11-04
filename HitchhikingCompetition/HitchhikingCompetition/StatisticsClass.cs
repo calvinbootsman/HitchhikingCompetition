@@ -28,7 +28,7 @@ namespace HitchhikingCompetition
     {
         
         public async void AddAdventureToText(Adventure adventure){
-            var file = await FileHandling.getFile("Adventure","Adventures");
+            var file = await FileHandling.GetFile("Adventure","Adventures");
             var text = await file.ReadAllTextAsync();
             text = text +          
                                    adventure.AmountOfKm.ToString() + "*" +

@@ -10,7 +10,7 @@ namespace HitchhikingCompetition
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public void Login()
         {
             InitializeComponent();
         }
@@ -24,10 +24,11 @@ namespace HitchhikingCompetition
             
             if (String.Compare(received, temp)+1 == 1)        //fucking C# with its string comparison: Checks if we got the user in the database
             {
-                //Write the username in a file and to a variable
+                //Write the username in a file and to a static variable
+                //TODO: Add filehandling file
                 try
                 {
-                    var file = await FileHandling.getFile("InlogFolder", "login.txt");
+                    var file = await FileHandling.GetFile("InlogFolder", "login.txt");
                     await file.WriteAllTextAsync(username);
                     App.MainUsername = username;
                 }
@@ -35,10 +36,11 @@ namespace HitchhikingCompetition
 				{
 					await DisplayAlert("log in File handling", er.ToString(), "Ok");
 				}
+
                 //Go to the next page
                 try
                 {
-                    Navigation.InsertPageBefore(new TabbedContent(), this);
+                    Navigation.InsertPageBefore(new TabbedContent(), this); //TODO: Change this page to another page!
                     await Navigation.PopToRootAsync();
                 }
                 catch(Exception er){

@@ -13,7 +13,7 @@
                         
                         <ViewCell >
                             <StackLayout Orientation="Horizontal" Padding="5">
-                                <Switch IsToggled="{Binding IsChecked}" Toggled="Updaten"/>
+                                <Switch IsToggled="{Binding IsChecked}" Toggled="MakeUpToDate"/>
                                 <StackLayout Orientation="Vertical">
                                     <Label Text="{Binding Item}" FontAttributes="Bold" FontSize="Large"/>
                                     <Label Text="{Binding Description}"/>

@@ -10,9 +10,16 @@
             <Button Text="Remove Log in" x:Name="Test" Clicked="TestIsClicked"/>
             <Button Text="Remove crazy88" x:Name="RemoveCrazy" Clicked="RemoveList"/>
             <Button Text="Get Location" x:Name="LocationBtn" Clicked="GetLocation"/>
-            <Label x:Name="Longitudelbl" Text=""/>
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="Large" Text="Enable Tracking"></Label>
+                <Switch x:Name="TrackingSwitch" Toggled="TrackingSwitch_Toggled" HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <Label x:Name="Longitudelbl" Text="" />
             <Label x:Name="Latitudelbl" Text=""/>
             <Label x:Name="Speedlbl" Text=""/>
+            <Label VerticalOptions="EndAndExpand">
+                This app is created by Calvin Bootsman. This is the Beta version. 
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
