@@ -26,13 +26,15 @@ namespace HitchhikingCompetition
 
         async void CheckIfLogedIn()
         {
+            FileHandling fileHandling = new FileHandling();
+            fileHandling.InitAppSettings();
             var data = new Data();
             var check = await data.ReadTheFile();
             while (check != 1) { };
             //First we check if theres a file with something in it. 
             //If there's nothing in it we go to the log in            
-            var file = await FileHandling.getFile("InlogFolder", "login.txt");
-            var username=  await file.ReadAllTextAsync();
+
+            var username = App.MainUsername;
             if (username.Equals(""))
             {
                 try
@@ -50,7 +52,7 @@ namespace HitchhikingCompetition
             else
             {
                 Debug.WriteLine("Username is: " + username);
-                App.MainUsername = username;
+               
                 try { 
                 Navigation.InsertPageBefore(new TabbedContent(), this);
                 await Navigation.PopToRootAsync(); }
