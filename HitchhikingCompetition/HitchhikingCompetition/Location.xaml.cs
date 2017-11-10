@@ -52,8 +52,8 @@ namespace HitchhikingCompetition
             if (App.AllowTracking)
             {
                 TrackerNotEnabled.IsVisible = false;
-                var tabbedcontent = new TabbedContent();
-                tabbedcontent.UpdateLocation();
+                var Settings = new Settings();
+                Settings.GetLocation(sender, e);
                 LocationWebsite.Source = (LocationWebsite.Source as UrlWebViewSource).Url;
             }
             else

@@ -20,15 +20,16 @@ namespace HitchhikingCompetition
         protected override void OnAppearing()
         {
             base.OnAppearing();
-           
+            App.TimerRunning = false;
             CheckIfLogedIn();
+
         }
 
         async void CheckIfLogedIn()
         {
-            var data = new Data();
-            var check = await data.ReadTheFile();
-            while (check != 1) { };
+            //var data = new Data();
+            //var check = await data.ReadTheFile();
+            //while (check != 1) { };
             //First we check if theres a file with something in it. 
             //If there's nothing in it we go to the log in  
             IFile file = await FileHandling.GetFile("Appdata", "AllowTracking.txt");

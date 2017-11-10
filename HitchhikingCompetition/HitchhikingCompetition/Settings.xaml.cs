@@ -20,37 +20,53 @@ namespace HitchhikingCompetition
 
         async public void GetLocation(object sender, EventArgs e)
         {
-            try
+            if (App.TimerRunning == false)
             {
-                var locator = CrossGeolocator.Current;
-                locator.DesiredAccuracy = 100;
-
-                var position = await locator.GetPositionAsync(30000);
-                var latitude = position.Latitude;
-                Latitudelbl.Text = "Latitude: " + position.Latitude;
-                Longitudelbl.Text = "Longitude: " + position.Longitude;
-                Speedlbl.Text = "Speed: " + position.Speed;
-#if DEBUG
-                Debug.WriteLine("Position Status: {0}", position.Timestamp);
-                Debug.WriteLine("Position Latitude: {0}", position.Latitude);
-                Debug.WriteLine("Position Longitude: {0}", position.Longitude);
-#endif
-                var client = new System.Net.Http.HttpClient();
-                var uri = new Uri("http://trickingnederland.nl/lift/Liftwedstrijd.php");
-
-                //Post request vormen:
-                var str = new FormUrlEncodedContent(new[]
+                App.TimerRunning = true;
+                try
                 {
-                    new KeyValuePair<string, string>("loginUsername", App.MainUsername),
-                    new KeyValuePair<string, string>("latitude", position.Latitude.ToString()),
-                    new KeyValuePair<string, string>("longitude", position.Longitude.ToString()),
-                    new KeyValuePair<string, string>("speed", position.Speed.ToString())
-                });
+                    if (App.AllowTracking)
+                    {
+                        var locator = CrossGeolocator.Current;
+                    locator.DesiredAccuracy = 100;
 
-                //Waardes doorsturen:
-                await client.PostAsync(uri, str);
+                    var position = await locator.GetPositionAsync(30000);
+                    var latitude = position.Latitude;
+                    Latitudelbl.Text = "Latitude: " + position.Latitude;
+                    Longitudelbl.Text = "Longitude: " + position.Longitude;
+                    Speedlbl.Text = "Speed: " + position.Speed;
+#if DEBUG
+                    Debug.WriteLine("Position Status: {0}", position.Timestamp);
+                    Debug.WriteLine("Position Latitude: {0}", position.Latitude);
+                    Debug.WriteLine("Position Longitude: {0}", position.Longitude);
+#endif
+                    var client = new System.Net.Http.HttpClient();
+                    var uri = new Uri("http://trickingnederland.nl/lift/Liftwedstrijd.php");
+
+                    //Post request vormen:
+                    var str = new FormUrlEncodedContent(new[]
+                    {
+                        new KeyValuePair<string, string>("loginUsername", App.MainUsername),
+                        new KeyValuePair<string, string>("latitude", position.Latitude.ToString()),
+                        new KeyValuePair<string, string>("longitude", position.Longitude.ToString()),
+                        new KeyValuePair<string, string>("speed", position.Speed.ToString())
+                    });
+
+                    //Waardes doorsturen:
+                    await client.PostAsync(uri, str);
+                    
+                        Device.StartTimer(TimeSpan.FromMinutes(1), () =>
+                        {
+                            // call your method to check for notifications here
+                            App.TimerRunning = false;
+                            // Returning true means you want to repeat this timer
+                            return false;
+                        });
+                    }
+                }
+
+                catch (Exception) { }
             }
-            catch (Exception) { }
         }
 
         async void TestIsClicked(object sender, EventArgs e)

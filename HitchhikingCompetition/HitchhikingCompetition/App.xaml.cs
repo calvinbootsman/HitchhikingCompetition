@@ -12,6 +12,7 @@ namespace HitchhikingCompetition
     {
         public static string MainUsername { get; set; }
         public static bool AllowTracking{ get; set; }
+        public static bool TimerRunning { get; set; }
         public App()
         {
             InitializeComponent();

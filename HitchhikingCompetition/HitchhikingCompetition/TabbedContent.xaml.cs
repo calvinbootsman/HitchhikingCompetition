@@ -21,7 +21,7 @@ namespace HitchhikingCompetition
             {
                 Children.Add(new Location() { Title = "Location" });
                 //Children.Add(new StatisticsPage() { Title = "Ride" });
-                Children.Add(new Crazy88() { Title = "Crazy88" });
+               // Children.Add(new Crazy88() { Title = "Crazy88" });
                 Children.Add(new Account() { Title = "Account" });
                 Children.Add(new Settings() { Title = "Settings" });
                 //Children.Add(new AddAdventurePage(){ Title="Adventure Page"});
@@ -35,14 +35,13 @@ namespace HitchhikingCompetition
                 //Children.Add(new AddAdventurePage() { Title = "Adventure Page" });
             }
 
-            UpdateLocation();
+            //UpdateLocation();
             try
             {
                 if (App.AllowTracking)
                 {
                     Device.StartTimer(TimeSpan.FromMinutes(3), () =>
                     {
-
                         // call your method to check for notifications here
                         UpdateLocation();
                         // Returning true means you want to repeat this timer
@@ -55,14 +54,15 @@ namespace HitchhikingCompetition
                 Debug.WriteLine(e);
             } 
         }
-       public void UpdateLocation()
-        {
+        public void UpdateLocation()
+        {            
             var test = new object();
             var test1 = new EventArgs();
             Settings setting = new Settings();
-            setting.GetLocation(test,test1);
+            setting.GetLocation(test, test1);
+            Debug.WriteLine("Just updated the location");
         }
-        async void CheckTracking()
+         void CheckTracking()
         {
             
         }
