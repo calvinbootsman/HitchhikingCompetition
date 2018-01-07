@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Diagnostics;
-using PCLStorage;
+using Plugin.Geolocator;
 
 namespace HitchhikingCompetition
 {
@@ -16,7 +12,7 @@ namespace HitchhikingCompetition
         public TabbedContent()
         {
             InitializeComponent();
-            CheckTracking();
+            
             if (Device.RuntimePlatform != Device.iOS)
             {
                 Children.Add(new Location() { Title = "Location" });
@@ -38,33 +34,43 @@ namespace HitchhikingCompetition
             //UpdateLocation();
             try
             {
-                if (App.AllowTracking)
+                Device.StartTimer(TimeSpan.FromMinutes(3), () =>
                 {
-                    Device.StartTimer(TimeSpan.FromMinutes(3), () =>
-                    {
-                        // call your method to check for notifications here
-                        UpdateLocation();
-                        // Returning true means you want to repeat this timer
-                        return App.AllowTracking;
-                    });
-                }
+                    // call your method to check for notifications here
+                    UpdateLocation();
+                    // Returning true means you want to repeat this timer
+                    return true;
+                });
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e);
             } 
         }
-        public void UpdateLocation()
-        {            
-            var test = new object();
-            var test1 = new EventArgs();
-            Settings setting = new Settings();
-            setting.GetLocation(test, test1);
-            Debug.WriteLine("Just updated the location");
-        }
-         void CheckTracking()
+
+        public async void UpdateLocation()
         {
-            
+            if (App.AllowTracking)
+            {
+                var locationhandling = new LocationHandling();
+                var position = await locationhandling.GetCurrentLocation();
+
+                if (position != null)
+                {
+                    var SendControl = await locationhandling.UpdateLocation(position);
+                    if (!SendControl)
+                    {
+#if DEBUG
+                        Debug.WriteLine("Couldn't update the location");
+#endif
+                        var answer = await DisplayAlert("Could not send the location", "Please check your connection", "Retry", "Cancel");
+                        if (answer)
+                        {
+                            UpdateLocation();
+                        }
+                    }
+                }
+            }
         }
     }
 }

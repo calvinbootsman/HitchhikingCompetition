@@ -1,5 +1,6 @@
 ﻿using System;
-
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -14,6 +15,7 @@ namespace HitchhikingCompetition.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            Xamarin.FormsMaps.Init(this, bundle);
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
@@ -21,7 +23,15 @@ namespace HitchhikingCompetition.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
+
+            
         }
+
+        /*public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }*/
     }
 }
 

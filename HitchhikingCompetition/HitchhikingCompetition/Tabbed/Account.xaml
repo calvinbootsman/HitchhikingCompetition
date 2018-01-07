@@ -8,8 +8,8 @@
             <Entry x:Name="MoodEntry" Placeholder="Happy!" />
             <Label Text="Message:"/>
             <Entry x:Name="MessageEntry" Placeholder="We're going to win!"/>
-            <Button Text="Update!" Clicked="Button_Clicked"/>
-            <ActivityIndicator Color="Blue" IsRunning="False"/>
+            <Button x:Name="SendButton" Text="Update!" Clicked="Button_Clicked"/>
+            <ActivityIndicator x:Name="Activity" Color="Blue" IsRunning="False"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

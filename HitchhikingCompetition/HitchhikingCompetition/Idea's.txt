@@ -1,0 +1,15 @@
+﻿When the location should be updated:
+ - When an update location button is clicked
+ - Every x minutes. This should be configurable. ==> still todo
+
+It should be able to show when the last update was.
+It should be able to show how many updates there were. 
+
+ALSO NEED TO CHANGE THE LOGIN TO STOP WORKING WITH TEXTFILES
+
+The crazy 88 should be resetable so that you can get a new one on demand
+
+----MAPS-----------------------------
+I only added the android version. For iOS release I should add it too
+https://developer.xamarin.com/guides/xamarin-forms/user-interface/map/
+

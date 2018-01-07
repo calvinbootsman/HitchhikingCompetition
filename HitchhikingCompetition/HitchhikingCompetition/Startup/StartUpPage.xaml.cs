@@ -32,11 +32,16 @@ namespace HitchhikingCompetition
             //while (check != 1) { };
             //First we check if theres a file with something in it. 
             //If there's nothing in it we go to the log in  
-            IFile file = await FileHandling.GetFile("Appdata", "AllowTracking.txt");
-            var temp = await file.ReadAllTextAsync();
-            if (temp == "1") App.AllowTracking = true;
-            else App.AllowTracking = false;
-             file = await FileHandling.GetFile("Appdata", "login.txt");
+            
+            if (Application.Current.Properties.ContainsKey("AllowTracking"))
+            {
+                App.AllowTracking = Convert.ToBoolean(Application.Current.Properties["AllowTracking"]);
+            }
+            else
+            {
+                App.AllowTracking = false;
+            }
+            IFile file = await FileHandling.GetFile("Appdata", "login.txt");
             var username = await file.ReadAllTextAsync();
             if (username.Equals(""))
             {

@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Forms.Maps;
+using HitchhikingCompetition.Classes;
+using System.Diagnostics;
 
 namespace HitchhikingCompetition
 {
@@ -15,12 +18,17 @@ namespace HitchhikingCompetition
         public Location()
         {
             InitializeComponent();
-            var UpdateLocation = new Button()
+            MyMap.MoveToRegion(
+                MapSpan.FromCenterAndRadius(
+                    new Position(51.415560, 9.192118), Distance.FromMiles(200)));
+                    var UpdateLocation = new Button()
             {
                 Text = "Get Location"
             };
+
             UpdateLocation.Clicked += UpdateLocation_Clicked;
             MainStack.Children.Add(UpdateLocation);
+
             var test = new object();
             var test1 = new EventArgs();
             RefreshPage(test, test1);
@@ -29,6 +37,7 @@ namespace HitchhikingCompetition
                 TrackerNotEnabled.IsVisible = true;
             }
         }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -54,7 +63,7 @@ namespace HitchhikingCompetition
                 TrackerNotEnabled.IsVisible = false;
                 var Settings = new Settings();
                 Settings.GetLocation(sender, e);
-                LocationWebsite.Source = (LocationWebsite.Source as UrlWebViewSource).Url;
+                LocationWebsite.Source = "http://trickingnederland.nl/lift/maps.php";
             }
             else
             {
@@ -62,11 +71,28 @@ namespace HitchhikingCompetition
             }
         }
 
-        public void RefreshPage(object sender, EventArgs e)
+        public async void RefreshPage(object sender, EventArgs e)
         {
             if (App.AllowTracking)
             {
-                TrackerNotEnabled.IsVisible = false;
+                Markers markers = new Markers();
+                //var MarkersString = 
+                    var list = await markers.GetMarkers();
+                foreach (Markers x in list)
+                {
+                    string label = x.coupleName + "\r\n" + x.Mood;
+                    var position = new Position(Convert.ToDouble(x.longitude), Convert.ToDouble(x.latitude)); // Latitude, Longitude
+                    var pin = new Pin
+                    {
+                        Type = PinType.Generic,
+                        Position = position,
+                        Label = label
+                    };
+                    MyMap.Pins.Add(pin);
+                }
+                //Debug.WriteLine(MarkersString);
+
+                //TrackerNotEnabled.IsVisible = false;
                 LocationWebsite.Source = "http://trickingnederland.nl/lift/maps.php"; 
             }
             else

@@ -43,23 +43,33 @@ namespace HitchhikingCompetition
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            EnableDisabe(false);
             try { 
-            var client = new System.Net.Http.HttpClient();
-            var uri = new Uri("http://trickingnederland.nl/lift/Liftwedstrijd.php");
+                var client = new System.Net.Http.HttpClient();
+                var uri = new Uri("http://trickingnederland.nl/lift/Liftwedstrijd.php");
 
-            //Post request vormen:
-            var str = new FormUrlEncodedContent(new[]
-            {
+                //Post request vormen:
+                var str = new FormUrlEncodedContent(new[]
+                {
                     new KeyValuePair<string, string>("loginUsername", App.MainUsername),
                     new KeyValuePair<string, string>("mood", MoodEntry.Text),
                     new KeyValuePair<string, string>("message", MessageEntry.Text),
                 });
 
-            //Waardes doorsturen:
-            var text = await client.PostAsync(uri, str);
+                //Waardes doorsturen:
+                var text = await client.PostAsync(uri, str);
                 Debug.WriteLine("received: " + text.ToString());
-        }
+            }
             catch (Exception) { }
-}
+            EnableDisabe(true);
+        }
+
+        private void EnableDisabe(bool x)
+        {
+            Activity.IsRunning = !x;
+            MoodEntry.IsEnabled = x;
+            MessageEntry.IsEnabled = x;
+            SendButton.IsEnabled = x;
+        }
     }
 }
