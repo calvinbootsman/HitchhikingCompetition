@@ -24,15 +24,13 @@ namespace HitchhikingCompetition
             CheckIfLogedIn();
 
         }
-
+        
         async void CheckIfLogedIn()
-        {
-            //var data = new Data();
-            //var check = await data.ReadTheFile();
-            //while (check != 1) { };
-            //First we check if theres a file with something in it. 
-            //If there's nothing in it we go to the log in  
-            
+        {            
+            //Blijkbaar checken we eerst of we de locatie mogen versturen naar de website
+            //Daarna checken we of we al weten of er is ingelogd. Dit gaat echter op de oude manier, 
+            //dit moet nog veranderd worden, maar dat is voor later
+            // ook gaan we niet naar LoginPage.xaml, maar naar MainPage.xaml. 
             if (Application.Current.Properties.ContainsKey("AllowTracking"))
             {
                 App.AllowTracking = Convert.ToBoolean(Application.Current.Properties["AllowTracking"]);
@@ -41,6 +39,7 @@ namespace HitchhikingCompetition
             {
                 App.AllowTracking = false;
             }
+            //TODO: dit op een andere manier te doen. Waarom? Daarom!
             IFile file = await FileHandling.GetFile("Appdata", "login.txt");
             var username = await file.ReadAllTextAsync();
             if (username.Equals(""))

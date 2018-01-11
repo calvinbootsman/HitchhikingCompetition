@@ -23,10 +23,12 @@ namespace HitchhikingCompetition
             var received = await PostInlog(username, password);     //send the typed in data to the server and waits for response
             var temp = "1";
             
-            if (true) //(String.Compare(received, temp)+1 == 1)        //fucking C# with its string comparison: Checks if we got the user in the database
+            //Ik heb dit tijdelijk aangepast om niet telkens berichten te zenden naar mn website.
+            //Dit is eigenlijk wat mooier moet. Hoe, geen idee, mag je zelf lekker weten!
+            if (true) //(String.Compare(received, temp)+1 == 1)       
             {
                 //Write the username in a file and to a static variable
-                //TODO: Add filehandling file
+                //TODO: ook dit veranderen.
                 try
                 {
                     var file = await FileHandling.GetFile("Appdata", "login.txt");
