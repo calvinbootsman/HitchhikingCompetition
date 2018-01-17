@@ -12,6 +12,8 @@ namespace HitchhikingCompetition
         public Crazy88()
         {
             InitializeComponent();
+            Data data = new Data();
+            //data.ReadTheFile().Wait();            
             Crazy88List.ItemsSource = Data.crazy88list;
         }
 

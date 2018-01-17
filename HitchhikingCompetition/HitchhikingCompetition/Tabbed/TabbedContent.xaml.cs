@@ -12,17 +12,17 @@ namespace HitchhikingCompetition
         public TabbedContent()
         {
             InitializeComponent();
-            
+            //ANDROID
             if (Device.RuntimePlatform != Device.iOS)
             {
                 Children.Add(new Location() { Title = "Location" });
                 //Children.Add(new StatisticsPage() { Title = "Ride" });
-               // Children.Add(new Crazy88() { Title = "Crazy88" });
+                Children.Add(new Crazy88() { Title = "Crazy88" });
                 Children.Add(new Account() { Title = "Account" });
                 Children.Add(new Settings() { Title = "Settings" });
                 //Children.Add(new AddAdventurePage(){ Title="Adventure Page"});
             }
-            else
+            else //iOS
             {
                 Children.Add(new Location() { Icon = "Location/ic_location_on_36pt.png" });
                 //Children.Add(new StatisticsPage(){Icon = "Car/ic_directions_car_48pt.png"});
