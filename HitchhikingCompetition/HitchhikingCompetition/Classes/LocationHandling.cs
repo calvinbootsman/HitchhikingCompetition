@@ -19,14 +19,14 @@ namespace HitchhikingCompetition
                var locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 100;
 
-                position = await locator.GetLastKnownLocationAsync();
+              //  position = await locator.GetLastKnownLocationAsync();
 
-                if (position != null)
+               /* if (position != null)
                 {
-                    //got a cahched position, so let's use it.
+                    //got a cached position, so let's use it.
                     return position;
                 }
-
+                */
                 if (!locator.IsGeolocationAvailable || !locator.IsGeolocationEnabled)
                 {
                     //not available or enabled
@@ -38,7 +38,7 @@ namespace HitchhikingCompetition
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("ERROR: " + ex.Message);
+             //THat   Debug.WriteLine("ERROR: " + ex.Message);
                 position = null;
                 return position;
             }

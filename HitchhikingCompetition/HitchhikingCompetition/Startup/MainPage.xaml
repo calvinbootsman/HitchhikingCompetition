@@ -17,9 +17,9 @@
                      Orientation="Vertical"
                      Spacing="15">
             <Label Text="Username:" />
-            <Entry x:Name="LoginUsername" Text="" />
+            <Entry x:Name="LoginUsername" Text="AlidaRinske" />
             <Label Text="Password:" />
-            <Entry x:Name="LoginPassword" IsPassword="True" Text="" />
+            <Entry x:Name="LoginPassword" IsPassword="True" Text="4862" />
             <Button x:Name="LoginBtn" Text="Login" Clicked="LoginClicked" />
             <Label x:Name="WrongCode" Text="" TextColor="IndianRed"/>
             <ActivityIndicator x:Name="ActivityRunner" Color="Blue" IsRunning="False"/>

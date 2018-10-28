@@ -22,7 +22,6 @@ namespace HitchhikingCompetition
         {
 
             InitializeComponent();
-            permissionfunction();
 
 
             MyMap.MoveToRegion(
@@ -39,6 +38,7 @@ namespace HitchhikingCompetition
             var test = new object();
             var test1 = new EventArgs();
             RefreshPage(test, test1);
+
             if (!App.AllowTracking)
             {
                 TrackerNotEnabled.IsVisible = true;
@@ -53,7 +53,9 @@ namespace HitchhikingCompetition
             {
                 TrackerNotEnabled.IsVisible = false;
                 //LocationWebsite.IsVisible = true;
-                
+                var test = new object();
+                var test1 = new EventArgs();
+                RefreshPage(test, test1);
             }
             else
             {
@@ -108,30 +110,6 @@ namespace HitchhikingCompetition
             }
         }
 
-        async void permissionfunction()
-        {
-            try
-{
-                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-                if (status != PermissionStatus.Granted)
-                {
-                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
-                    {
-                        await DisplayAlert("Need location", "Gunna need that location", "OK");
-                    }
-
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
-                    //Best practice to always check that the key exists
-                    if (results.ContainsKey(Permission.Location))
-                        status = results[Permission.Location];
-                }
-
-               
-            }
-catch (Exception ex)
-{
-
-}
-}
+        
     }
 }

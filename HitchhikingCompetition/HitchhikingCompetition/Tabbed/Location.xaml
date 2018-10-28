@@ -9,10 +9,8 @@
             <maps:Map WidthRequest="320" HeightRequest="200"
             x:Name="MyMap"
             IsShowingUser="true"
-            MapType="Hybrid"
+            MapType="Street"
         />
-
-            <WebView x:Name="LocationWebsite" WidthRequest="1000" HeightRequest="1000"/>
             <Button Clicked="RefreshPage" Text="Refresh"/>
         </StackLayout>
     </ContentPage.Content>

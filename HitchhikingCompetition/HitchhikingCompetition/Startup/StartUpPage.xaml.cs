@@ -7,6 +7,8 @@ using PCLStorage;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Diagnostics;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace HitchhikingCompetition
 {
@@ -21,10 +23,49 @@ namespace HitchhikingCompetition
         {
             base.OnAppearing();
             App.TimerRunning = false;
+            Permissionfunction();
             CheckIfLogedIn();
 
         }
-        
+
+        async void Permissionfunction()
+        {
+            try
+            {
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                if (status != PermissionStatus.Granted)
+                {
+                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
+                    {
+                        await DisplayAlert("Need location", "Gunna need that location", "OK");
+                    }
+
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+                    //Best practice to always check that the key exists
+                    if (results.ContainsKey(Permission.Location))
+                        status = results[Permission.Location];
+
+                    status  = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+
+                    if (status == PermissionStatus.Granted)
+                        {
+                            App.AllowTracking = true;
+                        }
+                        else
+                        {
+                            App.AllowTracking = false;
+                        }
+                    
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         async void CheckIfLogedIn()
         {            
             //Blijkbaar checken we eerst of we de locatie mogen versturen naar de website

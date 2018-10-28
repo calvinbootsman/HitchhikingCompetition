@@ -25,7 +25,7 @@ namespace HitchhikingCompetition
             
             //Ik heb dit tijdelijk aangepast om niet telkens berichten te zenden naar mn website.
             //Dit is eigenlijk wat mooier moet. Hoe, geen idee, mag je zelf lekker weten!
-            if (true) //(String.Compare(received, temp)+1 == 1)       
+            if (String.Compare(received, temp)+1 == 1)       
             {
                 //Write the username in a file and to a static variable
                 //TODO: ook dit veranderen.
@@ -59,24 +59,31 @@ namespace HitchhikingCompetition
 
         async Task<string> PostInlog(string username, string password)
         {
-            //Client intitialiseren:
-            var client = new System.Net.Http.HttpClient();
-            var uri = new Uri("http://trickingnederland.nl/lift/Liftwedstrijd.php");
+            try {
+                //Client intitialiseren:
+                var client = new System.Net.Http.HttpClient();
+                var uri = new Uri("http://trickingnederland.nl/lift/Liftwedstrijd.php");
 
-            //Post request vormen:
-            var str = new FormUrlEncodedContent(new[]
-            {
+                //Post request vormen:
+                var str = new FormUrlEncodedContent(new[]
+                {
                     new KeyValuePair<string, string>("loginUsername", username),
                     new KeyValuePair<string, string>("loginPassword", password)
                 });
 
-            //Waardes doorsturen:
-            var response = await client.PostAsync(uri, str);
-            var placesJson = response.Content.ReadAsStringAsync().Result;
-            string replaceWith = "";
-            placesJson = placesJson.Replace("\r\n", replaceWith).Replace("\n", replaceWith).Replace("\r", replaceWith);
-            Debug.WriteLine("Dit is er ontvangen: " + placesJson);
-            return placesJson;
+                //Waardes doorsturen:
+                var response = await client.PostAsync(uri, str);
+                var placesJson = response.Content.ReadAsStringAsync().Result;
+                string replaceWith = "";
+                placesJson = placesJson.Replace("\r\n", replaceWith).Replace("\n", replaceWith).Replace("\r", replaceWith);
+                Debug.WriteLine("Dit is er ontvangen: " + placesJson);
+                return placesJson;
+            }
+            catch 
+            {
+                await DisplayAlert("No connection", "No connection to the server could be established.", "OK");
+                return "0";
+            }
         }
     }
 }
