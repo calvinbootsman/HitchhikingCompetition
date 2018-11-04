@@ -5,6 +5,7 @@ using Plugin.Geolocator;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using PCLStorage;
+using HitchhikingCompetition.Classes;
 
 namespace HitchhikingCompetition
 {
@@ -100,11 +101,18 @@ namespace HitchhikingCompetition
             {
                 Application.Current.Properties["AllowTracking"] = "true";
                 App.AllowTracking = true;
+                
+                    var message = new StartLongRunningTaskMessage();
+                    MessagingCenter.Send(message, "StartLongRunningTaskMessage");
+                
             }
             else
             {
                 Application.Current.Properties["AllowTracking"] = "false";
                 App.AllowTracking = false;
+
+                var message = new StopLongRunningTaskMessage();
+                MessagingCenter.Send(message, "StopLongRunningTaskMessage");
             }
            
         }

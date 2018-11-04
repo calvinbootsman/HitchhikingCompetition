@@ -6,10 +6,12 @@ using Plugin.Geolocator.Abstractions;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Diagnostics;
+using System.Threading;
+using HitchhikingCompetition.Classes;
 
 namespace HitchhikingCompetition
 {
-    class LocationHandling
+    public class LocationHandling
     {
         public async Task<Position> GetCurrentLocation()
         {
@@ -72,6 +74,27 @@ namespace HitchhikingCompetition
             {
                 return false;
             }
+        }
+
+        public async Task BackgroundLocation(CancellationToken token)
+        {
+            await Task.Run(async () => {
+
+                for (long i = 0; i < long.MaxValue; i++)
+                {
+                    token.ThrowIfCancellationRequested();
+
+                    await Task.Delay(180000);
+
+                    if (App.AllowTracking)
+                    {
+                        var test = new object();
+                        var test1 = new EventArgs();
+                        var Settings = new Settings();
+                        Settings.GetLocation(test, test1);
+                    }
+                }
+            }, token);
         }
     }
 }
